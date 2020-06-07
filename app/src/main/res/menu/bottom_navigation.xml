@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_raspored"
+        android:icon="@drawable/ic_schedule_black_24dp"
+        android:title="Raspored" />
+
+    <item
+        android:id="@+id/menu_beleske"
+        android:icon="@drawable/ic_event_note_black_24dp"
+        android:title="Beleske" />
+
+    <item
+        android:id="@+id/menu_stat"
+        android:icon="@drawable/ic_bubble_chart_black_24dp"
+        android:title="Statistika" />
+
+</menu>
