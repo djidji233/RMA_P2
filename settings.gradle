@@ -1,0 +1,2 @@
+rootProject.name='RMA_P2'
+include ':app'
