@@ -23,32 +23,6 @@ class MainViewModel(
 
     private val publishSubject: PublishSubject<String> = PublishSubject.create()
 
-//    init {
-//        val subscription = publishSubject
-//            .debounce(200, TimeUnit.MILLISECONDS)
-//            .distinctUntilChanged()
-//            .switchMap {
-//                predmetiRepository
-//                    .getAll()
-//                    .subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .doOnError {
-//                        Timber.e("Error in publish subject")
-//                        Timber.e(it)
-//                    }
-//            }
-//            .subscribe(
-//                {
-//                    predmetiState.value = PredmetiState.Success(it)
-//                },
-//                {
-//                    predmetiState.value = PredmetiState.Error("Error happened while fetching data from db")
-//                    Timber.e(it)
-//                }
-//            )
-//        subscriptions.add(subscription)
-//    }
-
     override fun fetchAllPredmeti() {
         val subscription = predmetiRepository
             .fetchAll()
@@ -83,7 +57,126 @@ class MainViewModel(
                     predmetiState.value = PredmetiState.Success(it)
                 },
                 {
-                    predmetiState.value = PredmetiState.Error("Error happened while fetching data from db")
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getAllPredmeti")
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getByPredmetOrNastavnik(filter: String) {
+        val subscription = predmetiRepository
+            .getByPredmetOrNastavnik(filter)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    predmetiState.value = PredmetiState.Success(it)
+                },
+                {
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getByPredmetOrNastavnik")
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getByGrupa(grupe: String) {
+        val subscription = predmetiRepository
+            .getByGrupa(grupe)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    predmetiState.value = PredmetiState.Success(it)
+                },
+                {
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getByGrupa")
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getByDan(dan: String) {
+        val subscription = predmetiRepository
+            .getByDan(dan)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    predmetiState.value = PredmetiState.Success(it)
+                },
+                {
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getByDan")
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getByGrupaAndDan(dan: String, grupa: String) {
+        val subscription = predmetiRepository
+            .getByGrupaAndDan(dan, grupa)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    predmetiState.value = PredmetiState.Success(it)
+                },
+                {
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getByGrupaAndDan")
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getByGrupaAndPredmetOrNastavnik(grupa: String, filter: String) {
+        val subscription = predmetiRepository
+            .getByGrupaAndPredmetOrNastavnik(grupa, filter)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    predmetiState.value = PredmetiState.Success(it)
+                },
+                {
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getByGrupaAndPredmetOrNastavnik")
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getByDanAndPredmetOrNastavnik(dan: String, filter: String) {
+        val subscription = predmetiRepository
+            .getByDanAndPredmetOrNastavnik(dan, filter)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    predmetiState.value = PredmetiState.Success(it)
+                },
+                {
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getByDanAndPredmetOrNastavnik")
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun getByAllFilters(dan: String, filter: String, grupa: String) {
+        val subscription = predmetiRepository
+            .getByAllFilters(dan, filter, grupa)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    predmetiState.value = PredmetiState.Success(it)
+                },
+                {
+                    predmetiState.value = PredmetiState.Error("Error fetching from DB - getByAllFilters")
                     Timber.e(it)
                 }
             )

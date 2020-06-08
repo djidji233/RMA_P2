@@ -31,6 +31,7 @@ class RasporedFragment : Fragment(R.layout.fragment_raspored){
     private fun init(){
         initRecycler()
         initObservers()
+        initListeners()
     }
 
     private fun initRecycler(){
@@ -39,6 +40,31 @@ class RasporedFragment : Fragment(R.layout.fragment_raspored){
             PredmetDiffItemCallback()
         )
         recyclerList.adapter = predmetAdapter
+    }
+
+    private fun initListeners(){
+        btnSearch.setOnClickListener{
+            val grupa = grupaChoice.text.toString()
+            val dan = danChoice.text.toString()
+            val profesor_predmet = profesor_predmetChoice.text.toString()
+
+            var flag = 0;
+            if(grupa.isNotBlank()) flag +=1
+            if(dan.isNotBlank()) flag +=10
+            if(profesor_predmet.isNotBlank()) flag +=100
+
+            when(flag){
+                0 -> mainViewModel.getAllPredmeti()
+                1 -> mainViewModel.getByGrupa(grupa)
+                10 -> mainViewModel.getByDan(dan)
+                100 -> mainViewModel.getByPredmetOrNastavnik(profesor_predmet)
+                11 -> mainViewModel.getByGrupaAndDan(dan, grupa)
+                101 -> mainViewModel.getByGrupaAndPredmetOrNastavnik(grupa,profesor_predmet)
+                110 -> mainViewModel.getByDanAndPredmetOrNastavnik(dan, profesor_predmet)
+                111 -> mainViewModel.getByAllFilters(dan, profesor_predmet, grupa)
+            }
+
+        }
     }
 
     private fun initObservers(){
@@ -77,10 +103,11 @@ class RasporedFragment : Fragment(R.layout.fragment_raspored){
     }
 
     private fun showLoadingState(loading: Boolean) {
-        spinnerGrupa.isVisible = !loading
-        spinnerDan.isVisible = !loading
+        grupaChoice.isVisible = !loading
+        danChoice.isVisible = !loading
         recyclerList.isVisible = !loading
         profesor_predmetChoice.isVisible = !loading
+        btnSearch.isVisible = !loading
     }
 
 }

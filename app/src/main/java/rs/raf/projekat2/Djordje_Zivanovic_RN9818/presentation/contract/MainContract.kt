@@ -13,5 +13,13 @@ interface MainContract {
         fun fetchAllPredmeti()
         fun getAllPredmeti()
 
+        fun getByPredmetOrNastavnik(filter: String)
+        fun getByGrupa(grupe: String)
+        fun getByDan(dan: String)
+        fun getByGrupaAndDan(dan: String, grupa: String)
+        fun getByGrupaAndPredmetOrNastavnik(grupa: String, filter: String)
+        fun getByDanAndPredmetOrNastavnik(dan: String, filter: String)
+        fun getByAllFilters(dan: String, filter: String, grupa: String)
+
     }
 }

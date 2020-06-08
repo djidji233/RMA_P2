@@ -13,9 +13,11 @@ interface PredmetiRepository {
     fun deleteAll()
     fun deleteAndInsertAll(entities: List<PredmetEntity>)
     fun getAll(): Observable<List<Predmet>>
-//    fun getAllByName(name: String): Observable<List<Predmet>>
-    fun getByPredmet(predmet: String): Observable<List<PredmetEntity>>
-    fun getByNastavnik(nastavnik: String): Observable<List<PredmetEntity>>
-    fun getByGrupa(grupe: String): Observable<List<PredmetEntity>>
-    fun getByDan(dan: String): Observable<List<PredmetEntity>>
+    fun getByPredmetOrNastavnik(filter: String): Observable<List<Predmet>>
+    fun getByGrupa(grupe: String): Observable<List<Predmet>>
+    fun getByDan(dan: String): Observable<List<Predmet>>
+    fun getByGrupaAndDan(dan: String, grupa: String): Observable<List<Predmet>>
+    fun getByGrupaAndPredmetOrNastavnik(grupa: String, filter: String): Observable<List<Predmet>>
+    fun getByDanAndPredmetOrNastavnik(dan: String, filter: String): Observable<List<Predmet>>
+    fun getByAllFilters(dan: String, filter: String, grupa: String): Observable<List<Predmet>>
 }

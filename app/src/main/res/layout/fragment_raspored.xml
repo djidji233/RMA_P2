@@ -14,21 +14,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerGrupa"
+        <EditText
+            android:id="@+id/grupaChoice"
             android:minWidth="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Grupa">
 
-        </androidx.appcompat.widget.AppCompatSpinner>
+        </EditText>
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerDan"
+        <EditText
+            android:id="@+id/danChoice"
             android:minWidth="100dp"
+            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Dan">
 
-        </androidx.appcompat.widget.AppCompatSpinner>
+        </EditText>
 
     </LinearLayout>
 
@@ -56,14 +61,18 @@
             android:id="@+id/profesor_predmetChoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnSearch"
-            android:hint="Profesor/Predmet..."/>
+            android:hint="Profesor/Predmet"/>
         <Button
             android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Trazi"
+
+            android:layout_marginLeft="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclerList"

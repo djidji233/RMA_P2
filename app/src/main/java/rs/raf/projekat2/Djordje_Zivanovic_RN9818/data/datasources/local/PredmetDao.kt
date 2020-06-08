@@ -26,16 +26,25 @@ abstract class PredmetDao {
     @Query("SELECT * FROM predmeti")
     abstract fun getAll(): Observable<List<PredmetEntity>>
 
-    @Query("SELECT * FROM predmeti WHERE predmet LIKE :predmet || '%'")
-    abstract fun getByPredmet(predmet: String): Observable<List<PredmetEntity>>
-
-    @Query("SELECT * FROM predmeti WHERE nastavnik LIKE :nastavnik || '%'")
-    abstract fun getByNastavnik(nastavnik: String): Observable<List<PredmetEntity>>
+    @Query("SELECT * FROM predmeti WHERE predmet LIKE :filter || '%' OR nastavnik LIKE :filter || '%'")
+    abstract fun getByPredmetOrNastavnik(filter: String): Observable<List<PredmetEntity>>
 
     @Query("SELECT * FROM predmeti WHERE grupe LIKE :grupe || '%'")
     abstract fun getByGrupa(grupe: String): Observable<List<PredmetEntity>>
 
     @Query("SELECT * FROM predmeti WHERE dan LIKE :dan || '%'")
     abstract fun getByDan(dan: String): Observable<List<PredmetEntity>>
+
+    @Query("SELECT * FROM predmeti WHERE dan LIKE :dan || '%' AND grupe LIKE :grupa || '%'")
+    abstract fun getByGrupaAndDan(dan: String, grupa: String): Observable<List<PredmetEntity>>
+
+    @Query("SELECT * FROM predmeti WHERE grupe LIKE :grupa || '%' AND (predmet LIKE :filter || '%' OR nastavnik LIKE :filter || '%')")
+    abstract fun getByGrupaAndPredmetOrNastavnik(grupa: String, filter: String): Observable<List<PredmetEntity>>
+
+    @Query("SELECT * FROM predmeti WHERE dan LIKE :dan || '%' AND (predmet LIKE :filter || '%' OR nastavnik LIKE :filter || '%')")
+    abstract fun getByDanAndPredmetOrNastavnik(dan: String, filter: String): Observable<List<PredmetEntity>>
+
+    @Query("SELECT * FROM predmeti WHERE dan LIKE :dan || '%' AND (predmet LIKE :filter || '%' OR nastavnik LIKE :filter || '%') AND grupe LIKE :grupa ||'%'")
+    abstract fun getByAllFilters(dan: String, filter: String, grupa: String): Observable<List<PredmetEntity>>
 
 }

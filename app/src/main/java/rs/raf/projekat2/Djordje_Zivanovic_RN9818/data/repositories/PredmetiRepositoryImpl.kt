@@ -71,24 +71,70 @@ class PredmetiRepositoryImpl ( // iz entity/response u predmet
             }
     }
 
-    override fun getByPredmet(predmet: String): Observable<List<PredmetEntity>> {
-        return localDataSource.getByPredmet(predmet)
+    override fun getByPredmetOrNastavnik(filter: String): Observable<List<Predmet>> {
+        return localDataSource.getByPredmetOrNastavnik(filter).map{
+            it.map {
+                Predmet(it.id, it.predmet, it.tip, it.nastavnik, it.ucionica, it.grupe, it.dan, it.termin)
+            }
+        }
     }
 
-    override fun getByNastavnik(nastavnik: String): Observable<List<PredmetEntity>> {
-        return localDataSource.getByNastavnik(nastavnik)
+    override fun getByGrupa(grupe: String): Observable<List<Predmet>> {
+        return localDataSource.getByGrupa(grupe).map{
+            it.map {
+                Predmet(it.id, it.predmet, it.tip, it.nastavnik, it.ucionica, it.grupe, it.dan, it.termin)
+            }
+        }
     }
 
-    override fun getByGrupa(grupe: String): Observable<List<PredmetEntity>> {
-        return localDataSource.getByGrupa(grupe)
+    override fun getByDan(dan: String): Observable<List<Predmet>> {
+        return localDataSource.getByDan(dan).map{
+            it.map {
+                Predmet(it.id, it.predmet, it.tip, it.nastavnik, it.ucionica, it.grupe, it.dan, it.termin)
+            }
+        }
     }
 
-    override fun getByDan(dan: String): Observable<List<PredmetEntity>> {
-        return localDataSource.getByDan(dan)
+    override fun getByGrupaAndDan(dan: String, grupa: String): Observable<List<Predmet>> {
+        return localDataSource.getByGrupaAndDan(dan, grupa).map{
+            it.map {
+                Predmet(it.id, it.predmet, it.tip, it.nastavnik, it.ucionica, it.grupe, it.dan, it.termin)
+            }
+        }
     }
 
-//    override fun getAllByName(name: String): Observable<List<Predmet>> {
-//        TODO("Not yet implemented")
-//    }
+    override fun getByGrupaAndPredmetOrNastavnik(
+        grupa: String,
+        filter: String
+    ): Observable<List<Predmet>> {
+        return localDataSource.getByGrupaAndPredmetOrNastavnik(grupa,filter).map{
+            it.map {
+                Predmet(it.id, it.predmet, it.tip, it.nastavnik, it.ucionica, it.grupe, it.dan, it.termin)
+            }
+        }
+    }
+
+    override fun getByDanAndPredmetOrNastavnik(
+        dan: String,
+        filter: String
+    ): Observable<List<Predmet>> {
+        return localDataSource.getByDanAndPredmetOrNastavnik(dan,filter).map{
+            it.map {
+                Predmet(it.id, it.predmet, it.tip, it.nastavnik, it.ucionica, it.grupe, it.dan, it.termin)
+            }
+        }
+    }
+
+    override fun getByAllFilters(
+        dan: String,
+        filter: String,
+        grupa: String
+    ): Observable<List<Predmet>> {
+        return localDataSource.getByAllFilters(dan, filter, grupa).map{
+            it.map {
+                Predmet(it.id, it.predmet, it.tip, it.nastavnik, it.ucionica, it.grupe, it.dan, it.termin)
+            }
+        }
+    }
 
 }
