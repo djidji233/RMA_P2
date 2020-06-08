@@ -15,53 +15,20 @@
         android:orientation="vertical"
         android:layout_gravity="left">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="2dp">
-
-            <TextView
-                android:id="@+id/predmetTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" - ">
-
-            </TextView>
-            <TextView
-                android:id="@+id/tipTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </TextView>
-        </LinearLayout>
-
         <TextView
-            android:id="@+id/nastavnikTv"
+            android:id="@+id/noteTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="2dp">
 
         </TextView>
         <TextView
-            android:id="@+id/ucionicaTv"
+            android:id="@+id/noteContentTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="2dp">
 
         </TextView>
-        <TextView
-            android:id="@+id/grupeTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="2dp">
-
-        </TextView>
-
 
     </LinearLayout>
 
@@ -69,23 +36,31 @@
         android:id="@+id/rightLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_gravity="right"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/danTv"
+        <Button
+            android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="2dp">
+            android:drawableEnd="@drawable/ic_delete_black_24dp">
 
-        </TextView>
-        <TextView
-            android:id="@+id/terminTv"
+        </Button>
+        <Button
+            android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="2dp">
+            android:drawableEnd="@drawable/ic_edit_black_24dp">
 
-        </TextView>
+        </Button>
+        <Button
+            android:id="@+id/btnArchive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_archive_black_24dp">
+
+        </Button>
 
     </LinearLayout>
 
