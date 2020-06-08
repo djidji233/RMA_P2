@@ -9,8 +9,8 @@ import rs.raf.projekat2.Djordje_Zivanovic_RN9818.presentation.view.recycler.diff
 import rs.raf.projekat2.Djordje_Zivanovic_RN9818.presentation.view.recycler.viewholder.PredmetViewHolder
 
 class PredmetAdapter (
-    patientDiffItemCallback: PredmetDiffItemCallback
-) : ListAdapter<Predmet, PredmetViewHolder>(patientDiffItemCallback){
+    predmetDiffItemCallback: PredmetDiffItemCallback
+) : ListAdapter<Predmet, PredmetViewHolder>(predmetDiffItemCallback){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PredmetViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
